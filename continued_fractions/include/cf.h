@@ -1,9 +1,10 @@
+#include <math.h>
+#include <assert.h>
+#include <ctype.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <ctype.h>
 #include <iso646.h>
-
-#define LIMIT 11
+#include <limits.h>
 
 void scan_rn (int *p, int *q); // scan whole or rational number
 void scan_cf (int *ctr, int *exp); // scan representation of continued fraction
@@ -30,12 +31,14 @@ void scan_cf (int *ctr, int *exp) {
     *ctr = -1;
     int i = 0;
     char symbol = 0;
-    char number[LIMIT] = {0};
+    const int limit = log10(INT_MAX) + 1;
+    char *number = (char *)calloc(limit, sizeof(char));
+    assert(number);
 
     // input parsing
     do {
         scanf("%c", &symbol);
-        if (isdigit(symbol) and i < LIMIT - 1) {
+        if (isdigit(symbol) and i <= limit) {
             if (i == 0) *ctr += 1;
             number[i++] = symbol;
         }
@@ -47,5 +50,7 @@ void scan_cf (int *ctr, int *exp) {
     }
     while (symbol != '\n');
     *ctr += 1;
+
+    free(number);
 
 }

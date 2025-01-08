@@ -1,3 +1,5 @@
+#include <stdio.h>
+
 void cf_expansion (int p, int q) {
 
     /*   print expansion of continued fraction

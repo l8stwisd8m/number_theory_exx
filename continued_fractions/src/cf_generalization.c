@@ -1,7 +1,7 @@
 #include <stdio.h>
+#include "../include/cf.h"
 
 void cf_generalization (int ctr, int *exp) {
-
     /*   find generalization using expansion
     input format: [a_0; a_1, a_2 ... a_n] */
 
@@ -24,5 +24,4 @@ void cf_generalization (int ctr, int *exp) {
     }
     numerator += denominator * exp[0];
     printf("%d/%d\n", numerator, denominator);
-
 }

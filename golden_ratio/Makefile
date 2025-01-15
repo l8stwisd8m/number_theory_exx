@@ -3,7 +3,5 @@ CC = gcc
 CFLAGS = -Wall -o
 
 # targets
-all: gr
-
-gr: golden_ratio.c
-	$(CC) $(CFLAGS) gr golden_ratio.c -lgmp
+all: golden_ratio.c
+	$(CC) golden_ratio.c $(CFLAGS) gr -lgmp

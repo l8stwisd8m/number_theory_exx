@@ -1,7 +1,7 @@
 #include <stdio.h>
+#include "../include/cf.h"
 
 void cf_expansion (int p, int q) {
-
     /*   print expansion of continued fraction
     of  rational  number  using the  following
     format: [a_0; a_1, a_2 ... a_n]         */
@@ -21,5 +21,4 @@ void cf_expansion (int p, int q) {
         if (r != 0) putchar (',');
     }
     printf("]\n");
-
 }

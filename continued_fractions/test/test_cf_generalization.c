@@ -1,10 +1,9 @@
-#include "include/cf.h"
-#include "src/cf_generalization.c"
+#include <stdio.h>
+#include "../include/cf.h"
 
 #define EXP_LIMIT 100
 
 int main(int argc, char **argv) {
-
     /* find generalization of given expansion of rational number
     in  the  format  [a_0; a_1, a_2, ... a_n],   result  in  the
     following format: N for whole numbers, N/M for rational   */
@@ -19,5 +18,4 @@ int main(int argc, char **argv) {
     cf_generalization(cf_ctr, cf_exp);
 
     return 0;
-
 }

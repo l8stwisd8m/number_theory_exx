@@ -1,15 +1,15 @@
 #include <stdio.h>
-#include <assert.h>
 #include <gmp.h>
 
 int main(int argc, char **argv) {
+    /* calculate the value of "golden ratio" 
+    with  an  accuracy  up  to  n  digits */
 
-    /*  print "golden ratio" with
-    an accuracy up to n digits */
-
-    // number of digits (feel free to change it)
-    unsigned int n = 1000;
-    assert(n > 0);
+    // amount of digits 
+    unsigned int n;
+    printf("Enter amount of digits: ");
+    scanf("%u", &n);
+    if (n == 0) return 0;
 
     // GMP variables
     mpz_t tmp, numerator, denominator;

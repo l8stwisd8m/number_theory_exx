@@ -1,8 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <iso646.h>
+#include "../include/cf.h"
 
 void cf_convergents (int p, int q) {
-
     /*   print convergents of rational
     number using the following format:
     p_0/q_0, p_1/q_1 ... p_n/q_n    */
@@ -45,5 +46,4 @@ void cf_convergents (int p, int q) {
         if (t1 and t3) printf(", ");
     }
     putchar('\n');
-
 }

@@ -2,32 +2,34 @@
 CC = gcc
 CFLAGS = -Wall -c
 
+# source and test files
+TEST_DIR = test
+SRC_DIR = src
+UTILS_SRC = $(SRC_DIR)/cf_utils.c
+EXPANSION_SRC = $(SRC_DIR)/cf_expansion.c
+CONVERGENTS_SRC = $(SRC_DIR)/cf_convergents.c
+GENERALIZATION_SRC = $(SRC_DIR)/cf_generalization.c
+
 # targets
 all: convergents expansion generalization
 
 convergents: test_cf_convergents.o cf_convergents.o cf_utils.o
-	$(CC) test_cf_convergents.o cf_convergents.o cf_utils.o -o convergents
-test_cf_convergents.o: test/test_cf_convergents.c
-	$(CC) test/test_cf_convergents.c $(CFLAGS)
-cf_convergents.o: src/cf_convergents.c
-	$(CC) src/cf_convergents.c $(CFLAGS)
+	$(CC) $^ -o $@
 
 expansion: test_cf_expansion.o cf_expansion.o cf_utils.o
-	$(CC) test_cf_expansion.o cf_expansion.o cf_utils.o -o expansion
-test_cf_expansion.o: test/test_cf_expansion.c
-	$(CC) test/test_cf_expansion.c $(CFLAGS)
-cf_expansion.o: src/cf_expansion.c
-	$(CC) src/cf_expansion.c $(CFLAGS)
+	$(CC) $^ -o $@
 
 generalization: test_cf_generalization.o cf_generalization.o cf_utils.o
-	$(CC) test_cf_generalization.o cf_generalization.o cf_utils.o -o generalization
-test_cf_generalization.o: test/test_cf_generalization.c
-	$(CC) test/test_cf_generalization.c $(CFLAGS) 
-cf_generalization.o: src/cf_generalization.c
-	$(CC) src/cf_generalization.c $(CFLAGS)
+	$(CC) $^ -o $@
 
-cf_utils.o: src/cf_utils.c #common target
-	$(CC) src/cf_utils.c $(CFLAGS)
+# object files
+%.o: $(TEST_DIR)/%.c
+	$(CC) $< $(CFLAGS)
+
+%.o: $(SRC_DIR)/%.c
+	$(CC) $< $(CFLAGS)
+
+cf_utils.o: $(UTILS_SRC)
 
 clean: 
 	rm -rf *.o convergents expansion generalization

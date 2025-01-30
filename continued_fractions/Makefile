@@ -5,10 +5,6 @@ CFLAGS = -Wall -c
 # source and test files
 TEST_DIR = test
 SRC_DIR = src
-UTILS_SRC = $(SRC_DIR)/cf_utils.c
-EXPANSION_SRC = $(SRC_DIR)/cf_expansion.c
-CONVERGENTS_SRC = $(SRC_DIR)/cf_convergents.c
-GENERALIZATION_SRC = $(SRC_DIR)/cf_generalization.c
 
 # targets
 all: convergents expansion generalization
@@ -28,8 +24,6 @@ generalization: test_cf_generalization.o cf_generalization.o cf_utils.o
 
 %.o: $(SRC_DIR)/%.c
 	$(CC) $< $(CFLAGS)
-
-cf_utils.o: $(UTILS_SRC)
 
 clean: 
 	rm -rf *.o convergents expansion generalization

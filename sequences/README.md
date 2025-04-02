@@ -7,3 +7,11 @@ The entire Farey series array can be constructed if initial fractions are $\frac
 The top level of tree (first node, vertice) will be $\frac{1}{2}$ for Farey series and $\frac{1}{1}$ for Stern-Brocot.
 
 The **Calkin-Wilf tree** is a binary tree similar to the Stern-Brocot. The main difference is its generative rule: on the top layer, first node $\frac{n}{d}$ is equal to $\frac{1}{1}$ and it's descendants are $\frac{n}{n+d}$ and $\frac{n+d}{d}$. 
+
+This section contains *stern_brocot*, *calkin-wilf* and *farey* functions intended to obtain corresponding series using tree nodes traversal. To build the executables: `make`.
+You can run each function manually or use autorun script for preview:
+
+    chmod +x autorun.sh
+    ./autorun.sh
+
+Also, there are some visualizations in the **assetes** folder. Currently, no makefile targets or shell scripts to create one though.

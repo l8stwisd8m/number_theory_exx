@@ -3,7 +3,7 @@
 
 #define EXP_LIMIT 100
 
-int main(int argc, char **argv) {
+int main(void) {
     /* find generalization of given expansion of rational number
     in  the  format  [a_0; a_1, a_2, ... a_n],   result  in  the
     following format: N for whole numbers, N/M for rational   */

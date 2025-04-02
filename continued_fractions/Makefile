@@ -1,29 +1,34 @@
 # compiler options
 CC = gcc
-CFLAGS = -Wall -c
+CFLAGS = -Wall -Wpedantic -Wextra
 
-# source and test files
+# directories
 TEST_DIR = test
 SRC_DIR = src
+OBJ_DIR = obj
+BIN_DIR = bin
+
+# files
+TARGETS = convergents expansion generalization
 
 # targets
-all: convergents expansion generalization
+all: $(OBJ_DIR) $(BIN_DIR) $(TARGETS)
 
-convergents: test_cf_convergents.o cf_convergents.o cf_utils.o
-	$(CC) $^ -o $@
+$(OBJ_DIR):
+	mkdir -p $(OBJ_DIR)
 
-expansion: test_cf_expansion.o cf_expansion.o cf_utils.o
-	$(CC) $^ -o $@
+$(BIN_DIR):
+	mkdir -p $(BIN_DIR)
 
-generalization: test_cf_generalization.o cf_generalization.o cf_utils.o
-	$(CC) $^ -o $@
+$(TARGETS): %: $(OBJ_DIR)/test_cf_%.o $(OBJ_DIR)/cf_%.o $(OBJ_DIR)/cf_utils.o
+	$(CC) $(CFLAGS) $^ -o $(BIN_DIR)/$@
 
 # object files
-%.o: $(TEST_DIR)/%.c
-	$(CC) $< $(CFLAGS)
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c 
+	$(CC) $(CFLAGS) -c -o $@ $<
 
-%.o: $(SRC_DIR)/%.c
-	$(CC) $< $(CFLAGS)
+$(OBJ_DIR)/%.o: $(TEST_DIR)/%.c 
+	$(CC) $(CFLAGS) -c -o $@ $<
 
 clean: 
-	rm -rf *.o convergents expansion generalization
+	rm -rf $(OBJ_DIR) $(BIN_DIR)

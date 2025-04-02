@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include "../include/cf.h"
 
-int main(int argc, char **argv) {
+int main(void) {
     /*   print convergents of rational
     number using the following format:
     p_0/q_0, p_1/q_1  ... ...  p_n/q_n

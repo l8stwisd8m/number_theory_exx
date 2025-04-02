@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <gmp.h>
 
-int main(int argc, char **argv) {
+int main(void) {
     /* calculate the value of "golden ratio" 
     with  an  accuracy  up  to  n  digits */
 
